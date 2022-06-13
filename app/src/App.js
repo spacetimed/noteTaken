@@ -1,16 +1,22 @@
 import './App.scss';
 import { useState, useEffect } from 'react';
+import CodeView from './CodeView';
 
-function handleUserInput(userInput) {
-    return;
-}
+/*
+function createCodeView(userInput) {
+    // let lines = userInput.split("\n");
+    return ( 
+        <div className="test">Test</div>
+    );
+}*/
 
 function App() {
     const [userInput, setUserInput] = useState(""); // State: { 'userInput' : ... }
 
+    /*
     useEffect( () => {
-        handleUserInput(userInput);
     }, [userInput]);
+    */
 
     return (
         <div className="App">
@@ -18,25 +24,11 @@ function App() {
             <div className="contentGrid">
                 <div className="textareaContainer">
                     <div className="codeView">
+                        {<CodeView userSays={userInput} />}
+                        
                         {/*
                         <div className="row">
                             <span className="lineContent"> This is a sample line </span>
-                        </div>
-
-                        <div className="row">
-                            <span className="lineContent"> This is a sample line </span>
-                        </div>
-
-                        <div className="row">
-                            <span className="lineContent"> This is a sample line </span>
-                        </div>
-
-                        <div className="row">
-                            <span className="lineContent"> This is a sample line </span>
-                        </div>
-
-                        <div className="row">
-                            <span className="lineContent"> This is a sample line ▌</span>
                         </div>
                         */}
 
