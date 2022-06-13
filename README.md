@@ -6,13 +6,9 @@ This is meant to provide "quick notes" with a markdown preview, offering a quick
 
 ---
 
-## Components:
-
----
-
 ## Architecture: 
 * Dark theme 
-* React
-* Redux
+* React, hooks
+* Sass
 * Material UI
 * [?] Host on Vercel / Heroku
