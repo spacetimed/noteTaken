@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { remark } from 'remark'
 import html from 'remark-html'
 
@@ -10,18 +10,7 @@ async function markdownToHtml(markdown) {
 }
 
 function parse(markdownText) {
-    console.log('markdownText->', markdownText)
-    /*  Sample input:
-    -------------------------
-        this is just a test
-        i dont know
-        # one two three
-        ## four five
-        # s
-        **cool**
-        # **cool** right
-    -------------------------
-    */
+    // console.log('markdownText->', markdownText)
     let lines = markdownText.split('\n');
     let returnStr = [];
     lines.forEach( (line, index) => {
@@ -58,8 +47,17 @@ function parse(markdownText) {
     return returnStr;
 }
 
+function handleKey(event, setCodeChange, codeInput) {
+    const key = event.keyCode;
+    if(key == 9) { // Tab key
+        event.preventDefault();
+        setCodeChange(codeInput + "    ");
+    }
+}
+
 function CodeEditor({setHtmlContent}) {
 
+    const textInput = useRef(null);
     const [codeInput, setCodeChange] = useState(""); // State: { 'codeInput' : ... }
 
     useEffect(() => {
@@ -74,9 +72,13 @@ function CodeEditor({setHtmlContent}) {
             <div className="full-codeContainer">
                 <pre className="codeView">
                     {parse(codeInput)}
-                    <br />
                 </pre>
-                <textarea spellCheck="false" className="hiddenInput" onChange={(e) => setCodeChange(e.target.value)}></textarea>
+                <textarea autoFocus aria-hidden="true" spellCheck="false" 
+                    value={codeInput} 
+                    className="hiddenInput" 
+                    onChange={(e) => setCodeChange(e.target.value)} 
+                    onKeyDown={(e) => handleKey(e, setCodeChange, codeInput)} 
+                />
             </div>
         </div>
     )

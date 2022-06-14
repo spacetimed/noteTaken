@@ -7,7 +7,7 @@ function App() {
     const [htmlContent, setHtmlContent] = useState(""); // State: { 'htmlContent' : ... }
 
     useEffect(() => {
-        console.log('htmlContent->', htmlContent);
+        // console.log('htmlContent->', htmlContent);
     }, [htmlContent]);
 
     return (
