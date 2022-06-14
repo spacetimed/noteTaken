@@ -1,6 +1,6 @@
 import './App.scss';
 import { useState, useEffect } from 'react';
-import CodeView from './CodeView';
+import CodeEditor from './CodeEditor';
 
 /*
 function createCodeView(userInput) {
@@ -11,7 +11,6 @@ function createCodeView(userInput) {
 }*/
 
 function App() {
-    const [userInput, setUserInput] = useState(""); // State: { 'userInput' : ... }
 
     /*
     useEffect( () => {
@@ -22,19 +21,7 @@ function App() {
         <div className="App">
             <div className="sidebar"></div>
             <div className="contentGrid">
-                <div className="textareaContainer">
-                    <div className="codeView">
-                        {<CodeView userSays={userInput} />}
-                        
-                        {/*
-                        <div className="row">
-                            <span className="lineContent"> This is a sample line </span>
-                        </div>
-                        */}
-
-                    </div>
-                    <textarea className="hiddenInput" onChange={(e) => setUserInput(e.target.value)}></textarea>
-                </div>
+                <CodeEditor />
                 <div className="previewContainer"></div>
             </div>
         </div>

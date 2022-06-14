@@ -2,13 +2,13 @@
 
 A markdown note taker with basic VIM keybinds.
 
-This is meant to provide "quick notes" with a markdown preview, offering a quick "copy to clipboard" option for users.
+This is meant to provide "quick note taking" with a markdown preview, offering an easy "copy to clipboard" option.
 
 ---
 
-## Architecture: 
-* Dark theme 
+## Features: 
+* Dark theme style 
 * React, hooks
-* Sass
+* Sass/Scss
 * Material UI
 * [?] Host on Vercel / Heroku
