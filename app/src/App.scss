@@ -1,6 +1,12 @@
 $dark1:rgba(0,0,0,0.1);
 $border:rgba(255,255,255,0.1);
 
+@mixin highlight($weight, $color, $fontStyle) {
+    font-weight:$weight;
+    color:$color;
+    font-style:$fontStyle;
+}
+
 .App {
     width:100vw;
     height:100vh;
@@ -44,13 +50,75 @@ $border:rgba(255,255,255,0.1);
             top:0;
             left:0;
             width:100%;
-            min-height:10%;
+            min-height:100%;
 
             pre.codeView {
                 padding:1rem;
+                padding-left:0;
                 margin:0;
                 font-family:inherit;
                 color:#fff;
+                white-space: pre-wrap;     
+                white-space: -moz-pre-wrap;
+                white-space: -pre-wrap;    
+                white-space: -o-pre-wrap;  
+                word-wrap: break-word;     
+                word-wrap:break-word;
+
+                /*
+                    Thin 100 
+                    Thin 100 Italic 
+                    ExtraLight 200 
+                    ExtraLight 200 Italic 
+                    Light 300 
+                    Light 300 Italic 
+                    Regular 400 
+                    Regular 400 Italic 
+                    Medium 500 
+                    Medium 500 Italic 
+                    SemiBold 600 
+                    SemiBold 600 Italic 
+                    Bold 700 
+                    Bold 700 Italic 
+                */
+
+                .line {
+                    background-color:rgb(38, 38, 38);
+                    
+                    span.h1 {
+                        @include highlight(400, rgb(255,255,255), italic);
+                    }
+
+                    span.h2 {
+                        @include highlight(300, rgb(255, 255, 255), italic);
+                    }
+
+                    span.h3 {
+                        @include highlight(300, rgb(201, 201, 201), italic);
+                    }
+
+                    span.h4 {
+                        @include highlight(300, rgb(194, 194, 194), italic);
+                    }
+
+                    span.h5 {
+                        @include highlight(300, rgb(174, 171, 171), italic);
+                    }
+
+                    span.h6 {
+                        @include highlight(300, rgb(168, 168, 168), italic);
+                    }
+
+                    span.default {
+                        @include highlight(400, rgb(255, 255, 255), normal);
+                    }
+                    .lineNumber {
+                        width:2.25rem;
+                        padding-left:0.5rem;
+                        color:rgb(168,168,168);
+                        display:inline-block;
+                    }
+                }
             }
 
             .hiddenInput {
@@ -61,6 +129,7 @@ $border:rgba(255,255,255,0.1);
                 width:100%;
                 height:100%;
                 padding:1rem;
+                padding-left:2.75rem;
                 margin:0;
             
                 border:none;
@@ -70,10 +139,16 @@ $border:rgba(255,255,255,0.1);
                 caret-color:aqua;
 
                 outline:none;
+                resize:none;
+                box-sizing:border-box;
+                white-space: pre-wrap;       
+                white-space: -moz-pre-wrap;  
+                white-space: -pre-wrap;      
+                white-space: -o-pre-wrap;    
+                word-wrap: break-word;       
+                word-wrap:break-word;
             }
-
         }
-
     }
 }
 
