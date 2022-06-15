@@ -74,6 +74,10 @@ $blueBg:rgb(75, 78, 110);
         h6 {
             @include heading(200);
         }
+        blockquote {
+            border-left:4px solid $dark1;
+            padding-left:0.5rem;
+        }
     }
 
     .masked-codeContainer {
