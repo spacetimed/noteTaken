@@ -1,0 +1,27 @@
+# Welcome to 📝 noteTaken!
+
+A note taker that supports most markdown features, such as...
+* Lists
+* **Bolding text**
+* *Italicizing text*
+* ***and all of the above combined!***
+
+# Also,
+## it supports
+### six different
+#### types
+##### of
+###### headers!
+
+It also has basic support for code blocks!
+
+```json
+{
+    'make' : 'Tesla',
+    'price' : 90000
+}
+```
+
+Upon finishing, it provides a simple 'copy to clipboard' feature!
+
+# Enjoy! 👍

@@ -55,12 +55,14 @@ $blueBg:rgb(75, 78, 110);
             box-sizing:border-box;
             position:absolute;
             overflow-y:scroll;
-            white-space: pre-wrap;     
-            white-space: -moz-pre-wrap;
-            white-space: -pre-wrap;    
-            white-space: -o-pre-wrap;  
             word-wrap: break-word;     
             word-wrap:break-word;
+            * {
+                // margin-top:0;
+                // margin-bottom:0;
+                // padding-top:0;
+                // padding-bottom:0;
+            }
             code {
                 display:block;
                 border-radius:2px;
