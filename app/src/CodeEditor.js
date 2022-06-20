@@ -59,7 +59,7 @@ function handleKey(event, setCodeChange, codeInput, codeInputElement, setCaretPo
     }
 }
 
-function CodeEditor({setHtmlContent}) {
+function CodeEditor({setHtmlContent, setRawContent}) {
 
     const codeInputElement = useRef(null);
     const [codeInput, setCodeChange] = useState(""); // State: { 'codeInput' : ... }
@@ -69,6 +69,7 @@ function CodeEditor({setHtmlContent}) {
         markdownToHtml(codeInput)
         .then( (htmlContent) => {
             setHtmlContent(htmlContent);
+            setRawContent(codeInput);
         });
         if(caretPos !== -1) {
             codeInputElement.current.selectionEnd = caretPos;

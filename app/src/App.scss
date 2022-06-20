@@ -22,6 +22,7 @@ $blueBg:rgb(75, 78, 110);
 }
 
 .App .contentGrid {
+    z-index:0;
     display:grid;
     grid-template-columns:50px 1fr 1fr;
     width:100%;
@@ -45,38 +46,53 @@ $blueBg:rgb(75, 78, 110);
     .previewContainer {
         background-color:#fff;
         color:#000;
-        padding:1rem;
-        code {
-            display:block;
-            border-radius:2px;
+        box-sizing:border-box;
+
+        .previewContent {
+            height:100%;
+            width:100%;
             padding:1rem;
             box-sizing:border-box;
-            border:1px solid $dark1;
-            background-color:$blueBg;
-            font-family: 'Roboto Mono', monospace;
-            color:#fff;
-        }
-        h1 {
-            @include heading(200);
-        }
-        h2 {
-            @include heading(200);
-        }
-        h3 {
-            @include heading(200);
-        }
-        h4 {
-            @include heading(200);
-        }
-        h5 {
-            @include heading(200);
-        }
-        h6 {
-            @include heading(200);
-        }
-        blockquote {
-            border-left:4px solid $dark1;
-            padding-left:0.5rem;
+            position:absolute;
+            overflow-y:scroll;
+            white-space: pre-wrap;     
+            white-space: -moz-pre-wrap;
+            white-space: -pre-wrap;    
+            white-space: -o-pre-wrap;  
+            word-wrap: break-word;     
+            word-wrap:break-word;
+            code {
+                display:block;
+                border-radius:2px;
+                padding:1rem;
+                box-sizing:border-box;
+                border:1px solid $dark1;
+                background-color:$blueBg;
+                font-family: 'Roboto Mono', monospace;
+                color:#fff;
+            }
+            h1 {
+                @include heading(200);
+            }
+            h2 {
+                @include heading(200);
+            }
+            h3 {
+                @include heading(200);
+            }
+            h4 {
+                @include heading(200);
+            }
+            h5 {
+                @include heading(200);
+            }
+            h6 {
+                @include heading(200);
+            }
+            blockquote {
+                border-left:4px solid $dark1;
+                padding-left:0.5rem;
+            }
         }
     }
 

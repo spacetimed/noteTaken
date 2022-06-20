@@ -1,5 +1,5 @@
 import './App.scss';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import CodeEditor from './CodeEditor';
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
@@ -8,6 +8,8 @@ import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import List from '@mui/material/List';
 import IconButton from '@mui/material/IconButton';
+import Alert from '@mui/material/Alert';
+import Snackbar from '@mui/material/Snackbar';
 
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -25,13 +27,46 @@ const darkTheme = createTheme({
     },
 });
 
+const handleCopy = (rawContent, {setSnack, setToastType, setToastText}) => {
+    // No Internet Explorer support currently
+    navigator.clipboard.writeText(rawContent).then( () => {
+        setToastType('success');
+        setToastText('Copied to clipboard!');
+    }, () => {
+        setToastType('error');
+        setToastText('Failed to copy to clipboard!');
+    })
+    return setSnack(true);
+};
+
 function App() {
 
     const [htmlContent, setHtmlContent] = useState(""); // State: { 'htmlContent' : ... }
+    const [rawContent, setRawContent] = useState("");   // State: { 'rawContent' : ... }
     const [drawerShow, setDrawer] = useState(false);
+    const [snackShow, setSnack] = useState(false);
+    const [toastType, setToastType] = useState("error");
+    const [toastText, setToastText] = useState("An error occurred");
 
     return (
         <div className="App">
+            
+            {
+            /*<div className="layer0_modal">
+                <Alert severity="success">Successfully copied to copy to clipboard!</Alert>
+                {
+                    //<Alert severity="error">Unable to copy to clipboard.</Alert>
+                }
+            </div>
+            */}
+
+            <Snackbar open={snackShow} autoHideDuration={3000} onClose={ () => { 
+                setSnack(false);
+            }}>
+                <Alert severity={toastType} sx={{ width: '100%' }}>
+                    {toastText}
+                </Alert>
+            </Snackbar>
             
             <ThemeProvider theme={darkTheme}>
                 <Drawer open={drawerShow} onClose={() => {
@@ -40,7 +75,9 @@ function App() {
                     <Box sx={{width: 250}}>
                         <List>
                             <ListItem disablePadding sx={{paddingTop: '1rem', paddingBottom: '1rem'}}>
-                                <ListItemButton key="copy">
+                                <ListItemButton key="copy" onClick={() => {
+                                    handleCopy(rawContent, {setSnack, setToastType, setToastText});
+                                }}>
                                     <ListItemIcon>
                                         <ContentPasteIcon />
                                     </ListItemIcon>
@@ -49,7 +86,7 @@ function App() {
                             </ListItem>
                             <Divider />
                             <ListItem disablePadding sx={{paddingTop: '1rem'}}>
-                                <ListItemButton key="source">
+                                <ListItemButton key="source" component="a" href="https://github.com/spacetimed/noteTaken">
                                     <ListItemIcon>
                                         <GitHubIcon />
                                     </ListItemIcon>
@@ -57,7 +94,7 @@ function App() {
                                 </ListItemButton>
                             </ListItem>
                             <ListItem disablePadding>
-                                <ListItemButton key="about">
+                                <ListItemButton key="about" component="a" href="https://github.com/spacetimed/noteTaken">
                                     <ListItemIcon>
                                         <LibraryBooksIcon />
                                     </ListItemIcon>
@@ -79,8 +116,11 @@ function App() {
                     </IconButton>
 
                 </div>
-                <CodeEditor setHtmlContent={setHtmlContent} />
-                <div className="previewContainer" dangerouslySetInnerHTML={{ __html: htmlContent }}></div>
+                <CodeEditor setHtmlContent={setHtmlContent} setRawContent={setRawContent} />
+                <div className="previewContainer">
+                    <div className="previewContent" dangerouslySetInnerHTML={{ __html: htmlContent }}>
+                    </div>
+                </div>
             </div>
         </div>
     );
