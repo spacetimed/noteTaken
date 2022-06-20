@@ -5,7 +5,7 @@ A lightweight, minimalist **markdown note taker** for web browsers.
 This project is meant to provide "quick note taking" with a markdown preview, offering an easy "copy to clipboard" option prior to departure.
 
 ## 📺  Demo
-_To be added_
+![](assets/preview0.png)
 
 ## 🗂 Architecture
 This project uses:

@@ -13,7 +13,6 @@ A note taker that supports most markdown features, such as...
 ##### of
 ###### headers!
 
-It also has basic support for code blocks!
 
 ```json
 {
@@ -23,5 +22,9 @@ It also has basic support for code blocks!
 ```
 
 Upon finishing, it provides a simple 'copy to clipboard' feature!
+
+![](https://github.com/spacetimed/noteTaken/blob/main/assets/preview1.png?raw=true)
+
+![](https://github.com/spacetimed/noteTaken/blob/main/assets/preview2.png?raw=true)
 
 # Enjoy! 👍
