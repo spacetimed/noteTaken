@@ -18,9 +18,10 @@ This project is meant to provide "quick note taking" with a markdown preview, of
 * React
 * SASS / SCSS
 * Material UI (MUI)
-* Vercel hosting
+* Remark (markdown parsing)
+* Vercel hosted
 * A custom written `CodeEditor` component
-* Responsive rescaling for different viewports
+* Responsive rescaling, adapts to viewport
 
 <br>
 
@@ -29,6 +30,8 @@ This project is meant to provide "quick note taking" with a markdown preview, of
 * [!] **Bug fix:** Cursor location is incorrect if word wrap occurs in the code editor
 * **Bug fix:** Cursor location is incorrect on mobile
 * Responsiveness breaks under "extreme" resolutions (very small width resolutions)
+* Support for tables (using remark-gfm plugin)
+* Code cleanup
 
 <br>
 

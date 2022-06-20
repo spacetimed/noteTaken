@@ -6,14 +6,16 @@ async function markdownToHtml(markdown) {
     const result = await remark()
         .use(html)
         .process(markdown)
+
     return result.toString()
 }
 
+// to-do: clean up this function, optimize for efficiency
 function parse(markdownText) {
-    // console.log('markdownText->', markdownText)
     let lines = markdownText.split('\n');
     let returnStr = [];
     lines.forEach( (line, index) => {
+
         let tokenClass = "default";
         const words = line.split(" ");
         const tokenLead = words[0];
@@ -30,33 +32,36 @@ function parse(markdownText) {
         if(tokenLead in tokenClassMap)
             tokenClass = tokenClassMap[tokenLead];
 
-        words.forEach( word => {
-            // to-do: Count occurrences of **, if even occurence, replace every other with open and close strong
-            // bold/italic highlighting
-        });
+        // words.forEach( word => {
+        //     to-do: bold/italic highlighting preview in code editor
+        // });
 
         returnStr.push(
             <div key={index} className="line">
-                <span key={index + "_lineNum"} className="lineNumber">{index+1}</span>
+                <span key={index + "_lineNum"} className="lineNumber">{index + 1}</span>
                 <span key={index} className={tokenClass}>
                     {line}
                 </span>
             </div>
         )
     });
+
     return returnStr;
 }
 
 function handleKey(event, setCodeChange, codeInput, codeInputElement, setCaretPos) {
     const key = event.keyCode;
-    if(key == 9) { // Tab key
+
+    // Handle tab key indenting:
+    if(key == 9) {
         event.preventDefault();
         const begin = codeInputElement.current.selectionStart;
         const newCode = codeInput.substring(0, begin) + '    ' + codeInput.substring(begin, codeInput.length);
         setCodeChange(newCode);
         setCaretPos(begin + 4);
-        // caretPos(0);
     }
+
+    return;
 }
 
 function CodeEditor({setHtmlContent, setRawContent}) {
@@ -77,9 +82,6 @@ function CodeEditor({setHtmlContent, setRawContent}) {
             setCaretPos(-1);
         }
     }, [codeInput]);
-
-    // useEffect( () => {
-    // }, [caretPos]);
 
     return (
         <div className="masked-codeContainer">

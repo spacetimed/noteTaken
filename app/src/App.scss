@@ -9,7 +9,6 @@ $blueBg:rgb(75, 78, 110);
 }
 
 @mixin heading($weight) {
-    // font-weight:$weight;
     border-bottom:1px solid $dark1;
 }
 
@@ -57,12 +56,12 @@ $blueBg:rgb(75, 78, 110);
             overflow-y:scroll;
             word-wrap: break-word;     
             word-wrap:break-word;
-            * {
-                // margin-top:0;
-                // margin-bottom:0;
-                // padding-top:0;
-                // padding-bottom:0;
-            }
+            // * {
+            //     margin-top:0;
+            //     margin-bottom:0;
+            //     padding-top:0;
+            //     padding-bottom:0;
+            // }
             code {
                 display:block;
                 border-radius:2px;
@@ -125,20 +124,21 @@ $blueBg:rgb(75, 78, 110);
                 word-wrap:break-word;
 
                 /*
-                    Thin 100 
-                    Thin 100 Italic 
-                    ExtraLight 200 
-                    ExtraLight 200 Italic 
-                    Light 300 
-                    Light 300 Italic 
-                    Regular 400 
-                    Regular 400 Italic 
-                    Medium 500 
-                    Medium 500 Italic 
-                    SemiBold 600 
-                    SemiBold 600 Italic 
-                    Bold 700 
-                    Bold 700 Italic 
+                    available fonts:
+                      Thin 100 
+                      Thin 100 Italic 
+                      ExtraLight 200 
+                      ExtraLight 200 Italic 
+                      Light 300 
+                      Light 300 Italic 
+                      Regular 400 
+                      Regular 400 Italic 
+                      Medium 500 
+                      Medium 500 Italic 
+                      SemiBold 600 
+                      SemiBold 600 Italic 
+                      Bold 700 
+                      Bold 700 Italic 
                 */
 
                 .line {

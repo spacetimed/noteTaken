@@ -27,17 +27,19 @@ const darkTheme = createTheme({
     },
 });
 
-const handleCopy = (rawContent, {setSnack, setToastType, setToastText}) => {
-    // No Internet Explorer support currently
+// No Internet Explorer support currently (to fix using 'window' clipboard object)
+function handleCopy(rawContent, {setSnack, setToastType, setToastText}) {
+
     navigator.clipboard.writeText(rawContent).then( () => {
         setToastType('success');
         setToastText('Copied to clipboard!');
     }, () => {
         setToastType('error');
         setToastText('Failed to copy to clipboard!');
-    })
+    });
+
     return setSnack(true);
-};
+}
 
 function App() {
 
@@ -50,15 +52,6 @@ function App() {
 
     return (
         <div className="App">
-            
-            {
-            /*<div className="layer0_modal">
-                <Alert severity="success">Successfully copied to copy to clipboard!</Alert>
-                {
-                    //<Alert severity="error">Unable to copy to clipboard.</Alert>
-                }
-            </div>
-            */}
 
             <Snackbar open={snackShow} autoHideDuration={3000} onClose={ () => { 
                 setSnack(false);
@@ -107,16 +100,17 @@ function App() {
             </ThemeProvider>
 
             <div className="contentGrid">
+
                 <div className="sidebar">
-                    
                     <IconButton onClick={() => {
                         setDrawer(true);
-                    }} color="inherit" aria-label="delete">
+                    }} color="inherit" aria-label="Menu">
                         <MenuIcon />
                     </IconButton>
-
                 </div>
+
                 <CodeEditor setHtmlContent={setHtmlContent} setRawContent={setRawContent} />
+
                 <div className="previewContainer">
                     <div className="previewContent" dangerouslySetInnerHTML={{ __html: htmlContent }}>
                     </div>
